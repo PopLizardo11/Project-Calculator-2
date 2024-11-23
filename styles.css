@@ -1,0 +1,7 @@
+#display {
+    width: 100px;
+    height: 20px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px;
+}
