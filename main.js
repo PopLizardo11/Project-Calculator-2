@@ -1,3 +1,6 @@
+const display = document.querySelector("#display");
+const numberButtons = document.querySelectorAll(".numberButton") 
+
 let firstNum;
 let operator;
 let nextNum; 
