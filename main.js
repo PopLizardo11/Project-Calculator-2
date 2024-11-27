@@ -1,5 +1,6 @@
 const display = document.querySelector("#display");
-const numberButtons = document.querySelectorAll(".numberButton") 
+const numberButtons = document.querySelectorAll(".numberButton");
+const clearButton = document.querySelector("#clearButton");
 
 let firstNum;
 let operator;
@@ -33,3 +34,13 @@ function operate(x, y, op){
             return divide(x,y)
     }
 }
+
+numberButtons.forEach((node) => node.addEventListener("click", () => {
+    if (display.textContent !== "") {
+        display.textContent += node.textContent;
+    } else {
+        display.textContent = node.textContent;    
+    }
+}))
+
+clearButton.addEventListener("click", () => display.textContent = "")
