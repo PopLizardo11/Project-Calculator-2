@@ -43,4 +43,4 @@ numberButtons.forEach((node) => node.addEventListener("click", () => {
     }
 }))
 
-clearButton.addEventListener("click", () => display.textContent = "")
+clearButton.addEventListener("click", () => display.textContent = "");
