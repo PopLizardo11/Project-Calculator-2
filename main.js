@@ -68,7 +68,7 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
 
     if(operator) {
         let opResult = operate(firstNum, nextNum, operator);
-        firstNum = opResult;
+        firstNum = Math.round(opResult * 100) / 100;
         nextNum = false;
         display.textContent = firstNum;
         isEmpty = true;
@@ -92,7 +92,7 @@ equalButton.addEventListener("click", () => {
     }
 
     let opResult = operate(firstNum, nextNum, operator)
-    firstNum = opResult 
+    firstNum = Math.round(opResult * 100) / 100; 
     nextNum = false;
     display.textContent = firstNum;
     isEmpty = true;
