@@ -7,6 +7,7 @@ let firstNum = 0;
 let operator = "+";
 let nextNum = false; 
 let toNext = false;
+let isEmpty = true;
 
 function add(a, b) {
     return a + b
@@ -37,12 +38,17 @@ function operate(x, y, op){
     }
 }
 
-numberButtons.forEach((btn) => btn.addEventListener("click", () => {
-    if (display.textContent !== "") {
-        display.textContent += btn.textContent;
+function populateDis(button) {
+    if (!isEmpty) {
+        display.textContent += button.textContent;
     } else {
-        display.textContent = btn.textContent;   
+        display.textContent = button.textContent;
+        isEmpty = false;   
     }
+}
+
+numberButtons.forEach((btn) => btn.addEventListener("click", () => {
+    populateDis(btn)
 
     if (toNext) {
         nextNum = parseFloat(display.textContent);
@@ -55,8 +61,9 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
 
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
     operator = btn.getAttribute("data-key")
-    display.textContent = ""
+    display.textContent = "";
     toNext = true;
+
     if (nextNum === false) {
         return
     }
@@ -64,7 +71,10 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
         alert("Dividing by zero is not advised")
         return
     }
-    alert(operate(firstNum, nextNum, operator))
+
+    let opResult = operate(firstNum, nextNum, operator);
+    firstNum, nextNum = opResult, false;
+    alert(opResult)
 }))
 
 equalButton.addEventListener("click", () => {})
