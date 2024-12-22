@@ -60,6 +60,12 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
 }))
 
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
+
+    if (nextNum === 0 && operator === "/") {
+        alert("Dividing by zero is not advised")
+        return
+    }
+
     if(operator) {
         let opResult = operate(firstNum, nextNum, operator);
         firstNum = opResult;
@@ -73,17 +79,14 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
     toNext = true;
 
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+}))
 
-    if (nextNum === false) {
-        return
-    }
+equalButton.addEventListener("click", () => {
     if (nextNum === 0 && operator === "/") {
         alert("Dividing by zero is not advised")
         return
     }
-}))
 
-equalButton.addEventListener("click", () => {
     let opResult = operate(firstNum, nextNum, operator)
     firstNum = opResult 
     nextNum = false;
