@@ -4,7 +4,7 @@ const opButtons = document.querySelectorAll(".opButton");
 const clearButton = document.querySelector("#clearButton");
 
 let firstNum = 0;
-let operator = "+";
+let operator = false;
 let nextNum = false; 
 let toNext = false;
 let isEmpty = true;
@@ -52,17 +52,27 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
 
     if (toNext) {
         nextNum = parseFloat(display.textContent);
-        console.log(`${firstNum}, ${nextNum}`)
     } else {
         firstNum = parseFloat(display.textContent);
-        console.log(`${firstNum}, ${nextNum}`)
     } 
+
+    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }))
 
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
+    if(operator) {
+        let opResult = operate(firstNum, nextNum, operator);
+        firstNum = opResult;
+        nextNum = false;
+        display.textContent = firstNum;
+        isEmpty = true;
+    }
+
     operator = btn.getAttribute("data-key")
     isEmpty = true;
     toNext = true;
+
+    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 
     if (nextNum === false) {
         return
@@ -71,19 +81,15 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
         alert("Dividing by zero is not advised")
         return
     }
-
-    // let opResult = operate(firstNum, nextNum, operator);
-    // firstNum = opResult;
-    // nextNum = false;
-    // display.textContent = firstNum;
-    // isEmpty = true;
 }))
 
 equalButton.addEventListener("click", () => {
     let opResult = operate(firstNum, nextNum, operator)
     firstNum = opResult 
+    nextNum = false;
     display.textContent = firstNum;
     isEmpty = true;
+    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 })
 
 clearButton.addEventListener("click", () => {
