@@ -39,7 +39,7 @@ function operate(x, y, op){
 }
 
 function populateDis(button) {
-    if (!isEmpty) {
+    if (!isEmpty && parseFloat(display.textContent) !== 0) {
         display.textContent += button.textContent;
     } else {
         display.textContent = button.textContent;
