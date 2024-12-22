@@ -61,7 +61,7 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
 
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
     operator = btn.getAttribute("data-key")
-    display.textContent = "";
+    isEmpty = true;
     toNext = true;
 
     if (nextNum === false) {
@@ -72,16 +72,23 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
         return
     }
 
-    let opResult = operate(firstNum, nextNum, operator);
-    firstNum, nextNum = opResult, false;
-    alert(opResult)
+    // let opResult = operate(firstNum, nextNum, operator);
+    // firstNum = opResult;
+    // nextNum = false;
+    // display.textContent = firstNum;
+    // isEmpty = true;
 }))
 
-equalButton.addEventListener("click", () => {})
+equalButton.addEventListener("click", () => {
+    let opResult = operate(firstNum, nextNum, operator)
+    firstNum = opResult 
+    display.textContent = firstNum;
+    isEmpty = true;
+})
 
 clearButton.addEventListener("click", () => {
     display.textContent = ""
     firstNum = 0;
-    operator = "+";
-    nextNum = 0;
+    operator = false;
+    nextNum = false;
 });
