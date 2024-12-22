@@ -94,8 +94,8 @@ equalButton.addEventListener("click", () => {
     let opResult = operate(firstNum, nextNum, operator)
     firstNum = Math.round(opResult * 100) / 100; 
     nextNum = false;
+    operator = false;
     display.textContent = firstNum;
-    isEmpty = true;
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 })
 
