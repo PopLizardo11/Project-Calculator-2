@@ -60,9 +60,6 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
 }))
 
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
-    if(!nextNum) {
-        return
-    }
 
     if (nextNum === 0 && operator === "/") {
         alert("Dividing by zero is not advised")
