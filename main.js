@@ -134,3 +134,17 @@ clearButton.addEventListener("click", () => {
     operator = false;
     nextNum = false;
 });
+
+document.body.addEventListener("keydown", (e) => {
+    if(Number.isInteger(parseInt(e.key))) {
+        
+
+        if (toNext) {
+            nextNum = parseFloat(display.textContent);
+        } else {
+            firstNum = parseFloat(display.textContent);
+        } 
+
+        console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    }
+})
