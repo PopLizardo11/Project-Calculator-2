@@ -78,6 +78,8 @@ function oprtDis(btnText) {
     }
 
     if(isEmpty && nextNum === false) {
+        operator = btnText;
+        console.log(`${firstNum}, ${operator}, ${nextNum}, `)
         return
     }
 
