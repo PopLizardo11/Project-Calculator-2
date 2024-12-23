@@ -77,6 +77,10 @@ function oprtDis(btnText) {
         return
     }
 
+    if(isEmpty && nextNum === false) {
+        return
+    }
+
     if(operator) {
         let opResult = operate(firstNum, nextNum, operator);
         firstNum = Math.round(opResult * 100) / 100;
