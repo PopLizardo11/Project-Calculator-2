@@ -41,7 +41,9 @@ function operate(x, y, op){
 }
 
 function populateDis(btnText) {
-    if (!isEmpty && parseFloat(display.textContent) !== 0) {
+    if (btnText === "." || display.textContent === "0.") {
+        display.textContent += btnText;
+    } else if (!isEmpty && parseFloat(display.textContent) !== 0) {
         display.textContent += btnText;
     } else {
         display.textContent = btnText;
@@ -157,5 +159,5 @@ document.body.addEventListener("keydown", (e) => {
         oprtDis(e.key)
     }
 
-    alert(`${e.key}`)
+    // alert(`${e.key}`)
 })
