@@ -137,7 +137,7 @@ clearButton.addEventListener("click", () => {
 
 document.body.addEventListener("keydown", (e) => {
     if(Number.isInteger(parseInt(e.key))) {
-        
+        populateDis(e.key)
 
         if (toNext) {
             nextNum = parseFloat(display.textContent);
