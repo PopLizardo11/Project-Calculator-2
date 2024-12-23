@@ -129,7 +129,7 @@ equalButton.addEventListener("click", () => {
 })
 
 clearButton.addEventListener("click", () => {
-    display.textContent = ""
+    display.textContent = 0
     firstNum = 0;
     operator = false;
     nextNum = false;
