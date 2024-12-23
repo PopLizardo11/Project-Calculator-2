@@ -49,9 +49,7 @@ function populateDis(btnText) {
     }
 }
 
-numberButtons.forEach((btn) => btn.addEventListener("click", () => {
-    populateDis(btn.textContent)
-
+function assignDis() {
     if (toNext) {
         nextNum = parseFloat(display.textContent);
     } else {
@@ -59,6 +57,11 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
     } 
 
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+}
+
+numberButtons.forEach((btn) => btn.addEventListener("click", () => {
+    populateDis(btn.textContent)
+    assignDis()
 }))
 
 decButton.addEventListener("click", () => {
@@ -77,13 +80,7 @@ delButton.addEventListener("click", () => {
         display.textContent = 0;
     }
 
-    if (toNext) {
-        nextNum = parseFloat(display.textContent);
-    } else {
-        firstNum = parseFloat(display.textContent);
-    } 
-
-    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    assignDis()
 })
 
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
@@ -136,6 +133,8 @@ clearButton.addEventListener("click", () => {
 });
 
 document.body.addEventListener("keydown", (e) => {
+    alert(e.key)
+
     if(Number.isInteger(parseInt(e.key))) {
         populateDis(e.key)
 
