@@ -2,6 +2,8 @@ const display = document.querySelector("#display");
 const numberButtons = document.querySelectorAll(".numberButton");
 const opButtons = document.querySelectorAll(".opButton");
 const clearButton = document.querySelector("#clearButton");
+const decButton = document.querySelector("#decButton");
+const delButton = document.querySelector("#delButton");
 
 let firstNum = 0;
 let operator = false;
@@ -59,6 +61,11 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }))
 
+decButton.addEventListener("click", () => {
+    populateDis(decButton)
+    decButton.disabled = true;
+})
+
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
 
     if (nextNum === 0 && operator === "/") {
@@ -77,6 +84,7 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
     operator = btn.getAttribute("data-key")
     isEmpty = true;
     toNext = true;
+    decButton.disabled = false;
 
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }))
@@ -97,6 +105,7 @@ equalButton.addEventListener("click", () => {
     operator = false;
     display.textContent = firstNum;
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    decButton.disabled = false;
 })
 
 clearButton.addEventListener("click", () => {
