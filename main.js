@@ -102,6 +102,26 @@ function oprtDis(btnText) {
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }
 
+function evalDis() {
+    if(nextNum === false) {
+        return
+    }
+
+    if (nextNum === 0 && operator === "/") {
+        clearDis()
+        alert("Dividing by zero is not advised")
+        return
+    }
+
+    let opResult = operate(firstNum, nextNum, operator)
+    firstNum = Math.round(opResult * 100) / 100; 
+    nextNum = false;
+    operator = false;
+    display.textContent = firstNum;
+    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    decButton.disabled = false;
+}
+
 function clearDis() {
     display.textContent = 0
     firstNum = 0;
@@ -130,23 +150,7 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
 }))
 
 equalButton.addEventListener("click", () => {
-    if(nextNum === false) {
-        return
-    }
-
-    if (nextNum === 0 && operator === "/") {
-        clearDis()
-        alert("Dividing by zero is not advised")
-        return
-    }
-
-    let opResult = operate(firstNum, nextNum, operator)
-    firstNum = Math.round(opResult * 100) / 100; 
-    nextNum = false;
-    operator = false;
-    display.textContent = firstNum;
-    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
-    decButton.disabled = false;
+    evalDis()
 })
 
 clearButton.addEventListener("click", () => {
@@ -164,6 +168,8 @@ document.body.addEventListener("keydown", (e) => {
         assignDis()
     } else if (operations.includes(e.key)) {
         oprtDis(e.key)
+    } else if (e.key === "=") {
+        evalDis()
     }
 
     alert(`${e.key}`)
