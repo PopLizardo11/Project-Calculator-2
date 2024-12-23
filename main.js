@@ -40,17 +40,17 @@ function operate(x, y, op){
     }
 }
 
-function populateDis(button) {
+function populateDis(btnText) {
     if (!isEmpty && parseFloat(display.textContent) !== 0) {
-        display.textContent += button.textContent;
+        display.textContent += btnText;
     } else {
-        display.textContent = button.textContent;
+        display.textContent = btnText;
         isEmpty = false;   
     }
 }
 
 numberButtons.forEach((btn) => btn.addEventListener("click", () => {
-    populateDis(btn)
+    populateDis(btn.textContent)
 
     if (toNext) {
         nextNum = parseFloat(display.textContent);
@@ -62,7 +62,7 @@ numberButtons.forEach((btn) => btn.addEventListener("click", () => {
 }))
 
 decButton.addEventListener("click", () => {
-    populateDis(decButton)
+    populateDis(decButton.textContent)
     decButton.disabled = true;
 })
 
