@@ -75,6 +75,7 @@ function deleteDis() {
 
 function oprtDis(btnText) {
     if (nextNum === 0 && operator === "/") {
+        clearDis()
         alert("Dividing by zero is not advised")
         return
     }
@@ -99,6 +100,14 @@ function oprtDis(btnText) {
     decButton.disabled = false;
 
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+}
+
+function clearDis() {
+    display.textContent = 0
+    firstNum = 0;
+    operator = false;
+    nextNum = false;
+    toNext = false;
 }
 
 numberButtons.forEach((btn) => btn.addEventListener("click", () => {
@@ -126,6 +135,7 @@ equalButton.addEventListener("click", () => {
     }
 
     if (nextNum === 0 && operator === "/") {
+        clearDis()
         alert("Dividing by zero is not advised")
         return
     }
@@ -140,10 +150,7 @@ equalButton.addEventListener("click", () => {
 })
 
 clearButton.addEventListener("click", () => {
-    display.textContent = 0
-    firstNum = 0;
-    operator = false;
-    nextNum = false;
+    clearDis()
 });
 
 document.body.addEventListener("keydown", (e) => {
@@ -159,5 +166,5 @@ document.body.addEventListener("keydown", (e) => {
         oprtDis(e.key)
     }
 
-    // alert(`${e.key}`)
+    alert(`${e.key}`)
 })
