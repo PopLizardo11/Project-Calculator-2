@@ -90,7 +90,7 @@ opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
 }))
 
 equalButton.addEventListener("click", () => {
-    if(!nextNum) {
+    if(nextNum === false) {
         return
     }
 
