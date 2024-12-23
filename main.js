@@ -171,11 +171,9 @@ document.body.addEventListener("keydown", (e) => {
         assignDis()
     } else if (operations.includes(e.key)) {
         oprtDis(e.key)
-    } else if (e.key === "=") {
+    } else if (e.key === "=" || e.key === "Enter") {
         evalDis()
     } else if (e.key === "c" || e.key === "C") {
         clearDis()
     }
-
-    alert(`${e.key}`)
 })
