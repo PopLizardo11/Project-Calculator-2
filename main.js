@@ -52,7 +52,7 @@ function populateDis(btnText) {
 }
 
 function assignDis() {
-    if (toNext) {
+    if (toNext && operator) {
         nextNum = parseFloat(display.textContent);
     } else {
         firstNum = parseFloat(display.textContent);
@@ -103,7 +103,7 @@ function oprtDis(btnText) {
 }
 
 function evalDis() {
-    if(nextNum === false) {
+    if(nextNum === false || operator === false) {
         return
     }
 
@@ -160,9 +160,12 @@ clearButton.addEventListener("click", () => {
 document.body.addEventListener("keydown", (e) => {
     const operations = ["+", "-", "*", "/"]
 
-    if(Number.isInteger(parseInt(e.key))) {
+    if (Number.isInteger(parseInt(e.key))) {
         populateDis(e.key)
         assignDis()
+    } else if (e.key === "." && !decButton.disabled) {
+        populateDis(decButton.textContent)
+        decButton.disabled = true
     } else if (e.key === "Backspace") {
         deleteDis()
         assignDis()
