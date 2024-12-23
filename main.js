@@ -4,6 +4,7 @@ const opButtons = document.querySelectorAll(".opButton");
 const clearButton = document.querySelector("#clearButton");
 const decButton = document.querySelector("#decButton");
 const delButton = document.querySelector("#delButton");
+const signButton = document.querySelector("#signButton");
 
 let firstNum = 0;
 let operator = false;
@@ -156,6 +157,11 @@ equalButton.addEventListener("click", () => {
 clearButton.addEventListener("click", () => {
     clearDis()
 });
+
+signButton.addEventListener("click", () => {
+    display.textContent = parseInt(display.textContent) * -1;
+    assignDis();
+})
 
 document.body.addEventListener("keydown", (e) => {
     const operations = ["+", "-", "*", "/"]
