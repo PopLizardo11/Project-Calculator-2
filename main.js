@@ -59,6 +59,18 @@ function assignDis() {
     console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }
 
+function deleteDis() {
+    let oldDis = display.textContent
+    let newDis = oldDis.split("")
+    .splice(0, oldDis.length-1)
+    .join("");
+    display.textContent = newDis;
+
+    if (display.textContent === "") {
+        display.textContent = 0;
+    }
+}
+
 numberButtons.forEach((btn) => btn.addEventListener("click", () => {
     populateDis(btn.textContent)
     assignDis()
@@ -70,16 +82,7 @@ decButton.addEventListener("click", () => {
 })
 
 delButton.addEventListener("click", () => {
-    let oldDis = display.textContent
-    let newDis = oldDis.split("")
-    .splice(0, oldDis.length-1)
-    .join("");
-    display.textContent = newDis;
-
-    if (display.textContent === "") {
-        display.textContent = 0;
-    }
-
+    deleteDis()
     assignDis()
 })
 
@@ -133,17 +136,14 @@ clearButton.addEventListener("click", () => {
 });
 
 document.body.addEventListener("keydown", (e) => {
-    alert(e.key)
 
     if(Number.isInteger(parseInt(e.key))) {
         populateDis(e.key)
-
-        if (toNext) {
-            nextNum = parseFloat(display.textContent);
-        } else {
-            firstNum = parseFloat(display.textContent);
-        } 
-
-        console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+        assignDis()
+    } else if (e.key === "Backspace") {
+        deleteDis()
+        assignDis()
     }
+
+    alert(e.key)
 })
