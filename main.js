@@ -66,6 +66,26 @@ decButton.addEventListener("click", () => {
     decButton.disabled = true;
 })
 
+delButton.addEventListener("click", () => {
+    let oldDis = display.textContent
+    let newDis = oldDis.split("")
+    .splice(0, oldDis.length-1)
+    .join("");
+    display.textContent = newDis;
+
+    if (display.textContent === "") {
+        display.textContent = 0;
+    }
+
+    if (toNext) {
+        nextNum = parseFloat(display.textContent);
+    } else {
+        firstNum = parseFloat(display.textContent);
+    } 
+
+    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+})
+
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
 
     if (nextNum === 0 && operator === "/") {
