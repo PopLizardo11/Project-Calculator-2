@@ -71,6 +71,28 @@ function deleteDis() {
     }
 }
 
+function oprtDis(btnText) {
+    if (nextNum === 0 && operator === "/") {
+        alert("Dividing by zero is not advised")
+        return
+    }
+
+    if(operator) {
+        let opResult = operate(firstNum, nextNum, operator);
+        firstNum = Math.round(opResult * 100) / 100;
+        nextNum = false;
+        display.textContent = firstNum;
+        isEmpty = true;
+    }
+
+    operator = btnText
+    isEmpty = true;
+    toNext = true;
+    decButton.disabled = false;
+
+    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+}
+
 numberButtons.forEach((btn) => btn.addEventListener("click", () => {
     populateDis(btn.textContent)
     assignDis()
@@ -87,26 +109,7 @@ delButton.addEventListener("click", () => {
 })
 
 opButtons.forEach((btn) => btn.addEventListener("click", ()=> {
-
-    if (nextNum === 0 && operator === "/") {
-        alert("Dividing by zero is not advised")
-        return
-    }
-
-    if(operator) {
-        let opResult = operate(firstNum, nextNum, operator);
-        firstNum = Math.round(opResult * 100) / 100;
-        nextNum = false;
-        display.textContent = firstNum;
-        isEmpty = true;
-    }
-
-    operator = btn.getAttribute("data-key")
-    isEmpty = true;
-    toNext = true;
-    decButton.disabled = false;
-
-    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    oprtDis(btn.getAttribute("data-key"))
 }))
 
 equalButton.addEventListener("click", () => {
@@ -136,6 +139,7 @@ clearButton.addEventListener("click", () => {
 });
 
 document.body.addEventListener("keydown", (e) => {
+    const operations = ["+", "-", "*", "/"]
 
     if(Number.isInteger(parseInt(e.key))) {
         populateDis(e.key)
@@ -143,7 +147,9 @@ document.body.addEventListener("keydown", (e) => {
     } else if (e.key === "Backspace") {
         deleteDis()
         assignDis()
+    } else if (operations.includes(e.key)) {
+        oprtDis(e.key)
     }
 
-    alert(e.key)
+    alert(`${e.key}`)
 })
