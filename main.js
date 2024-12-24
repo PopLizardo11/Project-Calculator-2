@@ -42,14 +42,16 @@ function operate(x, y, op){
 }
 
 function populateDis(btnText) {
-    if (btnText === "." || display.textContent === "0.") {
+    if (btnText === "." || display.textContent === "0." || display.textContent === ".") {
         display.textContent += btnText;
+        isEmpty = false;
     } else if (!isEmpty && parseFloat(display.textContent) !== 0) {
         display.textContent += btnText;
     } else {
         display.textContent = btnText;
         isEmpty = false;   
     }
+    console.log(isEmpty)
 }
 
 function assignDis() {
