@@ -59,7 +59,7 @@ function assignDis() {
         firstNum = parseFloat(display.textContent);
     } 
 
-    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    // console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }
 
 function deleteDis() {
@@ -83,7 +83,7 @@ function oprtDis(btnText) {
 
     if(isEmpty && nextNum === false) {
         operator = btnText;
-        console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+        // console.log(`${firstNum}, ${operator}, ${nextNum}, `)
         return
     }
 
@@ -100,7 +100,7 @@ function oprtDis(btnText) {
     toNext = true;
     decButton.disabled = false;
 
-    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    // console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }
 
 function evalDis() {
@@ -119,7 +119,7 @@ function evalDis() {
     nextNum = false;
     operator = false;
     display.textContent = firstNum;
-    console.log(`${firstNum}, ${operator}, ${nextNum}, `)
+    // console.log(`${firstNum}, ${operator}, ${nextNum}, `)
     decButton.disabled = false;
 }
 
