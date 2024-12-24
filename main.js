@@ -159,6 +159,10 @@ clearButton.addEventListener("click", () => {
 });
 
 signButton.addEventListener("click", () => {
+    if (!parseInt(display.textContent)) {
+        return
+    }
+
     display.textContent = parseInt(display.textContent) * -1;
     assignDis();
 })
