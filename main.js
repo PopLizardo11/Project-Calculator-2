@@ -59,6 +59,7 @@ function assignDis() {
         firstNum = parseFloat(display.textContent);
     } 
 
+    checkDec()
     // console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }
 
@@ -98,7 +99,6 @@ function oprtDis(btnText) {
     operator = btnText
     isEmpty = true;
     toNext = true;
-    decButton.disabled = false;
 
     // console.log(`${firstNum}, ${operator}, ${nextNum}, `)
 }
@@ -120,7 +120,6 @@ function evalDis() {
     operator = false;
     display.textContent = firstNum;
     // console.log(`${firstNum}, ${operator}, ${nextNum}, `)
-    decButton.disabled = false;
 }
 
 function clearDis() {
@@ -129,6 +128,12 @@ function clearDis() {
     operator = false;
     nextNum = false;
     toNext = false;
+}
+
+function checkDec() {
+    if(!display.textContent.match(/\./g)) {
+        decButton.disabled = false;
+    }
 }
 
 numberButtons.forEach((btn) => btn.addEventListener("click", () => {
